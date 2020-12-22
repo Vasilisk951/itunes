@@ -52,6 +52,8 @@ export const videoPlayerInit = () => {
 
     videoButtonStop.addEventListener('click', stopPlay);
     
+
+    //настройка отображения dhtvtyb
     videoPlayer.addEventListener('timeupdate', () => {
         const currentTime = videoPlayer.currentTime;
         const durationTime = videoPlayer.duration;
@@ -67,7 +69,9 @@ export const videoPlayerInit = () => {
         videoTimePassed.textContent = `${addZero(minutePassed)}:${addZero(secondsPassed)}`;
         videoTimeTotal.textContent = `${addZero(minuteTotal)}:${addZero(secondsTotal)}`;
     });
+    
 
+    //перемотка видео ползунком
     videoProgress.addEventListener('change', () => {
         const duration = videoPlayer.duration;
         const value = videoProgress.value;
@@ -77,4 +81,4 @@ export const videoPlayerInit = () => {
     });
 
 
-}
+};
