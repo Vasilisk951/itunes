@@ -5,13 +5,17 @@ export const radioPlayerInit = () => {
     const radioNavigation = document.querySelector('.radio-navigation');
     const radioItem = document.querySelectorAll('.radio-item');
     const radioStop = document.querySelector('.radio-stop');
+    const radioVolume = document.querySelector('.radio-volume');
 
     const audio = new Audio();
     audio.type = 'audio/aac';
 
+    radioVolume.addEventListener('input', () => {
+        audio.volume = radioVolume.value / 100;
+    });
+
     //заблокировали кнопку пока радио не работает
     radioStop.disabled = true;
-
 
     //настраиваем кнупку паузы и запуска
     const changIconPlay = () => {
@@ -58,4 +62,5 @@ export const radioPlayerInit = () => {
         }
         changIconPlay();
     });
+
 };
