@@ -30,7 +30,7 @@ export const musicPlayerInit = () => {
     };
 
     const nextTrack = () => {
-        if (trackIndex === playlist.length -1) {
+        if (trackIndex === playlist.length - 1) {
             trackIndex = 0;
         } else {
             trackIndex++;
@@ -39,7 +39,7 @@ export const musicPlayerInit = () => {
     };
 
     const prevTrack = () => {
-        if(trackIndex !== 0) {
+        if (trackIndex !== 0) {
             trackIndex--;
         } else {
             trackIndex = playlist.length - 1;
@@ -54,8 +54,8 @@ export const musicPlayerInit = () => {
             audio.classList.toggle('play');
             audioButtonPlay.classList.toggle('fa-play');
             audioButtonPlay.classList.toggle('fa-pause');
-            
-            if(audioPlayer.paused){ //запуск музыки
+
+            if (audioPlayer.paused) { //запуск музыки
                 audioPlayer.play()
             } else {
                 audioPlayer.pause()
@@ -109,4 +109,13 @@ export const musicPlayerInit = () => {
     audioVolume.addEventListener('input', () => {
         audioPlayer.volume = audioVolume.value / 100;
     });
+
+    musicPlayerInit.stop = () => {
+       if (!audioPlayer.paused) {
+           audioPlayer.pause();
+           audio.classList.remove('play');
+           audioButtonPlay.classList.remove('fa-pause');
+           audioButtonPlay.classList.add('fa-play');
+       }
+    };
 };
